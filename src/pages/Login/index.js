@@ -6,7 +6,7 @@ export default function Login({ history }) {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
 
-  // função erro em casos de usuário/senha incorretos - Inicia sempre como false
+  // estado erro em casos de usuário/senha incorretos - Inicia sempre como false
   const [error, setError] = useState(false);
 
   // "event" pode possuir qualquer nome, até OCaralhoDoNomeQueEuQuiser xD
@@ -23,7 +23,7 @@ export default function Login({ history }) {
       if (apiUsername === user && apiPassword === password) {
         history.push("/home");
       } else {
-        //Chama a função setError
+        //Altera o estado Error, que por consequência renderiza o erro na tela
         setError("Usuário ou senha inválidos!");
       }
     });
@@ -31,6 +31,8 @@ export default function Login({ history }) {
 
   return (
     <>
+      {/* O operador  && renderiza o elemento da direita,
+      caso a condição da esquerda seja true  */}
       {error && <span>{error}</span>}
       <p>
         Bem vindo ao <strong>Desafio 1</strong>
